@@ -10,3 +10,12 @@ byte random(int analogInput);
 *analogInput* - indicates the analog input use to read random values.
 
 return a random byte;
+
+If you need por randomness you can combine two diferent random sources to generates one value using xor operator:
+
+```C
+byte r0 = random(A0);
+byte r1 = random(A1);
+
+byte r = r1 ^ r0;
+```
