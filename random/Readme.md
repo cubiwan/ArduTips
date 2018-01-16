@@ -42,7 +42,7 @@ return a random byte;
 *randomMicros* function read a noisy value from analog port and take last bit eight times to compose a byte
 
 ```C
-byte randomMicros{
+byte randomMicros(){
   byte rnd = 0;
   
   for(int i = 0; i < 8; i++){
