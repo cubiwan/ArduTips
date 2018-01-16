@@ -55,7 +55,7 @@ byte randomMicros{
 }
 ```
 
-##Combine Generators
+## Combine Generators
 
 If you need "more randomness" you can combine two diferent random sources to generates one value using xor operator:
 
