@@ -28,32 +28,6 @@ byte randomAnalog(int analogInput){
   return rnd;
 }
 ```
-## Using function micros()
-
-Micros returns the number of microseconds (1 second = 1.000.000 microseconds) since the Arduino board began running. Micros resolution depends clock speed in 16 MHz boards has 4 microseconds (values are multiple of four) in 8 Mhz boards has 8 microseconds (values are multiple of four). It is necessary rotate to right the last bit because they are always 0.
-
-To generate a random byte you can use the function:
-```C
-byte randomMicros();
-```
-
-return a random byte;
-
-*randomMicros* function read a noisy value from analog port and take last bit eight times to compose a byte
-
-```C
-byte randomMicros(){
-  byte rnd = 0;
-  
-  for(int i = 0; i < 8; i++){
-    int aux = (micros() >> 2)%2 << i;
-    rnd += aux;
-    delay(1);
-  }
-
-  return rnd;
-}
-```
 
 ## Combine Generators
 
@@ -61,7 +35,7 @@ If you need "more randomness" you can combine two diferent random sources to gen
 
 ```C
 byte r0 = randomAnalog(A0);
-byte r1 = randomMicros();
+byte r1 = randomAnalog(A1);
 
 byte r = r1 ^ r0;
 ```
