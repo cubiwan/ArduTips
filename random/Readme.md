@@ -28,6 +28,31 @@ byte randomAnalog(int analogInput){
   return rnd;
 }
 ```
+## Fair Generators
+
+A random source is fair when both bits [0,1] have equal probability (50%). 
+
+```C
+byte randomFairAnalog(int analogInput){
+   byte rnd = 0;
+  
+  for(int i = 0; i < 8; ){
+    delay(5);    
+    int aux1 = analogRead(analogInput)%2<< i;
+    delay(5);
+    int aux2 = analogRead(analogInput)%2<< i;
+
+    if(aux1 == aux2)
+      continue;
+   
+    rnd += aux1;
+    i++;
+    
+  }
+
+  return rnd;
+}
+```
 
 ## Combine Generators
 
